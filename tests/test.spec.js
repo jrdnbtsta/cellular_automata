@@ -97,6 +97,8 @@ describe('Cellular Automata Module', () => {
 
       const actual = getGen20(gen1);
 
+      console.log('Final Problem Answer -- Generation 20: ', actual);
+
       expect(actual).toEqual(expected);
     });
   });
