@@ -1,8 +1,13 @@
+import cloneDeep from 'lodash/cloneDeep';
 
+export const getEmptyNextVal = neighbors => {
+  // an empty cell becomes a newborn if there are 2 neighboring adults
 
+  const count = neighbors.reduce((count, neighbor) => {
+    return neighbor === 2 ? count + 1 : count;
+  }, 0);
 
-export const getEmptyNextVal = (neighbors) => {
-
+  return count === 2 ? 1 : 0;
 };
 
 /*
