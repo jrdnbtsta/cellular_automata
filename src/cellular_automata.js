@@ -103,13 +103,59 @@ export const getNeighbors = (previousGen, i, j) => {
   return neighbors;
 };
 
+/*
+  Loop through each element in the 2d array
+  - get its neighbors
+  - determine its next value
+*/
 
+export const getNextGeneration = previousGen => {
+  // use previous gen as starting point
+  const nextGen = cloneDeep(previousGen);
+
+  for (let i = 0; i < 10; i += 1) {
+    for (let j = 0; j < 10; j += 1) {
+      const neighbors = getNeighbors(previousGen, i, j);
+      const subject = previousGen[i][j];
+      let nextVal;
+
+      if (subject === 0) nextVal = getEmptyNextVal(neighbors);
+      if (subject === 1) nextVal = getNewbornNextVal(neighbors);
+      if (subject === 2) nextVal = getAdultNextVal(neighbors);
+      if (subject === 3) nextVal = 0;
+
+      nextGen[i][j] = nextVal;
+    }
+  }
+
+  return nextGen;
+};
+
+const gen1 = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 2, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 2, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+  [0, 2, 1, 0, 0, 0, 0, 0, 0, 0],
+  [0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+];
 
 /*
-  accepts the previous gen and returns its next gen
-
-
+Given a 2d array, getGen20 will return the 20th generation
+determined by the defined set of rules
 */
-export const getNextGeneration = (previousGen) => {
+const getGen20 = gen1 => {
+  let currentGen = 1;
+  const currentData = gen1;
 
+  while (currentGen <= 20) {
+    currentData = getNextGeneration(currentData);
+    currentGen += 1;
+  }
+
+  return currentData;
 };
