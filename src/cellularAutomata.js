@@ -52,15 +52,15 @@ export const getAdultNextVal = neighbors => {
 export const getNeighbors = (previousGen, i, j) => {
   const neighbors = [];
 
-  const topRow = i-1;
-  const bottomRow = i+1;
-  const leftColumn = j-1;
-  const rightColumn = j+1;
+  const topRow = i - 1;
+  const bottomRow = i + 1;
+  const leftColumn = j - 1;
+  const rightColumn = j + 1;
 
   const hasTopRow = topRow >= 0;
-  const hasBottomRow = bottomRow <= 10;
+  const hasBottomRow = bottomRow <= 9;
   const hasLeftColumn = leftColumn >= 0;
-  const hasRightColumn = rightColumn <= 10;
+  const hasRightColumn = rightColumn <= 9;
 
   // get top 3 neighbors
   if (hasTopRow) {
@@ -131,26 +131,13 @@ export const getNextGeneration = previousGen => {
   return nextGen;
 };
 
-const gen1 = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 2, 0, 0, 0, 0, 0],
-  [0, 0, 0, 1, 2, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
-  [0, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-  [0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-];
-
 /*
 Given a 2d array, getGen20 will return the 20th generation
 determined by the defined set of rules
 */
-const getGen20 = gen1 => {
+export const getGen20 = gen1 => {
   let currentGen = 1;
-  const currentData = gen1;
+  let currentData = gen1;
 
   while (currentGen <= 20) {
     currentData = getNextGeneration(currentData);
