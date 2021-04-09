@@ -15,7 +15,16 @@ export const getEmptyNextVal = neighbors => {
 
   returns the newborn's next value
 */
-export const getNewbornNextVal = (neighbors) => {
+export const getNewbornNextVal = neighbors => {
+  // a newborn dies if it has 5 or more neighbors, or only 1 neighbor
+  // else becomes an adult
+
+  const count = neighbors.reduce((count, neighbor) => {
+    return neighbor > 0 ? count + 1 : count;
+  }, 0);
+
+  if (count >= 5 || count <= 1) return 0;
+  return 2;
 };
 
 /*
