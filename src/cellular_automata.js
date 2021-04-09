@@ -32,17 +32,17 @@ export const getNewbornNextVal = neighbors => {
 
   returns its next value
 */
-export const getAdultNextVal = (neighbors) => {};
+export const getAdultNextVal = neighbors => {
+  // an adult dies if there are 3 or more neighbors, or 0 neighbors
+  // else becomes a senior
 
+  const count = neighbors.reduce((count, neighbor) => {
+    return neighbor > 0 ? count + 1 : count;
+  }, 0);
 
-/*
-  accepts a senior's neighbors
-
-  returns its next value
-*/
-export const getSeniorNextVal = (neighbors) => {};
-
-
+  if (count >= 3 || count === 0) return 0;
+  return 3;
+};
 
 /*
   accepts the previous Gen, i index and j index
