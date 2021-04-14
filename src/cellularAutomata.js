@@ -12,7 +12,6 @@ export const getEmptyNextVal = neighbors => {
 
 /*
   accepts an index's surrounding neighbors
-
   returns the newborn's next value
 */
 export const getNewbornNextVal = neighbors => {
@@ -29,7 +28,6 @@ export const getNewbornNextVal = neighbors => {
 
 /*
   accepts an adult's neighbors
-
   returns its next value
 */
 export const getAdultNextVal = neighbors => {
@@ -46,7 +44,6 @@ export const getAdultNextVal = neighbors => {
 
 /*
   accepts the previous Gen, i index and j index
-
   returns an array of the values of its neighbors
 */
 export const getNeighbors = (previousGen, i, j) => {
@@ -104,6 +101,9 @@ export const getNeighbors = (previousGen, i, j) => {
 };
 
 /*
+  accepts a 10x10 data grid
+  returns the next generation based on the given ruleset
+
   Loop through each element in the 2d array
   - get its neighbors
   - determine its next value
