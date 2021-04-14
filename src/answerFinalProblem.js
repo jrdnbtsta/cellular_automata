@@ -1,5 +1,4 @@
 import { getGen20 } from './cellularAutomata.js';
-// const { getGen20 } = require('./cellularAutomata.js')
 
 const gen1 = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
